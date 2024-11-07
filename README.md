@@ -204,7 +204,7 @@ Nếu hiện phiên bản mà không báo lỗi thì đã cài đặt thành cô
       </section>
       <!-- Form Tính BMI -->
       <section>
-
+          
       </section>
       <script src="js/script.js"></script>
   </body>

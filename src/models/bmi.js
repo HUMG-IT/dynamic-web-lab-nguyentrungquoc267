@@ -1,5 +1,6 @@
 // Tính chỉ số BMI dựa trên cân nặng và chiều cao, trả về hệ số BMI với 2 số sau dấu phẩy
-// 1. Định nghĩa hàm calculateBMI để tính chỉ số BMI:
+//1. Định nghĩa hàm calculateBMI để tính chỉ số BMI:
+
 // - Viết một hàm calculateBMI nhận hai tham số là weight (cân nặng, đơn vị kg) và height (chiều cao, đơn vị cm).
 // - Sử dụng công thức tính BMI: BMI = weight / (height / 100)^2.
 // - Đảm bảo kết quả của chỉ số BMI được giới hạn ở hai chữ số thập phân bằng .toFixed(2).
@@ -14,3 +15,24 @@
 //    - BMI từ 30 trở lên là "Béo phì".
 
 // Xuất các hàm calculateBMI và classifyBMI
+
+// Hàm tính chỉ số BMI
+// Hàm calculateBMI để tính chỉ số BMI
+exports.calculateBMI = (weight, height) => {
+    // Tính BMI theo công thức và giới hạn kết quả ở 2 chữ số thập phân
+    const bmi = weight / (height / 100) ** 2;
+    return parseFloat(bmi.toFixed(2));
+  };
+  
+  // Hàm classifyBMI để phân loại chỉ số BMI
+  exports.classifyBMI = (bmi) => {
+    if (bmi < 18.5) {
+      return "Gầy";
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+      return "Bình thường";
+    } else if (bmi >= 25 && bmi <= 29.9) {
+      return "Thừa cân";
+    } else {
+      return "Béo phì";
+    }
+  };
