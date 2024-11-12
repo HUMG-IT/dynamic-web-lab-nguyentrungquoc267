@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "prestart": "powershell -Command \"$processId = (Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue).OwningProcess; if ($processId) { Stop-Process -Id $processId -Force }\"",
+    "prestart": "if [ $(uname) = 'Linux' ]; then fuser -k 3000/tcp; else powershell -Command \"$processId = (Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue).OwningProcess; if ($processId) { Stop-Process -Id $processId -Force }\"; fi",
 
     "start": "node src/app.js",
     "test": "jest",
