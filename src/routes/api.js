@@ -1,39 +1,12 @@
-/**
- * Module định nghĩa các route của ứng dụng
- * 
- * Module này định nghĩa các route liên quan đến:
- * - Lưu tên của người dùng.
- * - Tính và phân loại chỉ số BMI từ dữ liệu người dùng.
- */
-
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { submitName } = require('../controllers/nameController');
-// Import hàm `getBMI` từ `bmiController`
-const { getBMI } = require('../controllers/bmiController'); // Thêm dòng này
+const { submitName } = require("../controllers/nameController");
+const { getBMI } = require("../controllers/bmiController"); // Chỉ thêm nếu bạn có bmiController.js
 
-/**
- * Route cho endpoint `/submit`
- * 
- * Route này nhận yêu cầu POST từ client với tên người dùng và
- * gọi hàm `submitName` từ `nameController` để thêm tên vào danh sách.
- * 
- * @route POST /api/v1/submit
- * @access Public
- * @returns {Object} JSON - Trả về thông điệp chào và danh sách tên.
- */
-router.post('/submit', submitName);
+// Route cho endpoint /submit
+router.post("/submit", submitName);
 
-/**
- * Route cho endpoint `/bmi`
- * 
- * Route này nhận yêu cầu POST từ client với thông tin chiều cao và cân nặng,
- * gọi hàm `getBMI` từ `bmiController` để tính và phân loại chỉ số BMI.
- * 
- * @route POST /api/v1/bmi
- * @access Public
- * @returns {Object} JSON - Trả về chỉ số BMI và phân loại.
- */
-router.post('/bmi', getBMI); // Định nghĩa route POST cho `/bmi`
+// Route cho endpoint /bmi (nếu đã tạo hàm getBMI trong bmiController.js)
+router.post("/bmi", getBMI);
 
 module.exports = router;
